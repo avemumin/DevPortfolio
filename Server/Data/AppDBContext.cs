@@ -15,7 +15,7 @@ namespace Server.Data
 
             Category[] categoriesToSeed = new Category[3];
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 1; i < 4; i++)
             {
                 //do thing
                 categoriesToSeed[i - 1] = new Category
