@@ -1,4 +1,5 @@
-﻿using Shared.Models;
+﻿using Client.Static;
+using Shared.Models;
 using System.Net.Http.Json;
 
 namespace Client.Services
@@ -27,9 +28,15 @@ namespace Client.Services
             }
         }
 
+        private bool _gettingGetCategoriesFromDatabaseAndCaching = false;
         internal async Task GetCategoriesFromDatabaseAndCache()
         {
-            _categories = await _httpClient.GetFromJsonAsync<List<Category>>("endpoint");
+            //only allow one get request to run at a time
+            if (_gettingGetCategoriesFromDatabaseAndCaching == false)
+            {
+                _gettingGetCategoriesFromDatabaseAndCaching= true;
+                _categories = await _httpClient.GetFromJsonAsync<List<Category>>(APIEndpoints.s_categories);
+            }
         }
 
         internal event Action OnCategoriesDataChanged;
