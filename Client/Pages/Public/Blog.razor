@@ -20,22 +20,11 @@
                     }
                 }
 
-
-                @* <div class="col-md-4">
-                    <CategoryCard />
-                    </div>
-
-                    <div class="col-md-4">
-                    <CategoryCard />
-                    </div>*@
-
-
             </div>
 
         </div>
     </div>
 </main>
-
 
 <Client.Components.Public.Shared.Footer />
 
@@ -53,7 +42,7 @@
         }
     }
 
-    //unsubscribe from events dispose else we'll create a memory leak
+    //unsubscribe from events Dispose() else we'll create a memory leak
 
     public void Dispose()
     {
