@@ -34,13 +34,14 @@ namespace Client.Services
             //only allow one get request to run at a time
             if (_gettingGetCategoriesFromDatabaseAndCaching == false)
             {
-                _gettingGetCategoriesFromDatabaseAndCaching= true;
+                _gettingGetCategoriesFromDatabaseAndCaching = true;
                 _categories = await _httpClient.GetFromJsonAsync<List<Category>>(APIEndpoints.s_categories);
+                _gettingGetCategoriesFromDatabaseAndCaching = false;
             }
         }
 
         internal event Action OnCategoriesDataChanged;
         private void NotifyCategoriesDataChanged() => OnCategoriesDataChanged?.Invoke();
-        
+
     }
 }
