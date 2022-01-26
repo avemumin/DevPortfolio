@@ -10,19 +10,26 @@
             <p>Click a category cart to view its blog posts.</p>
 
             <div class="row">
-                <div class="col-md-4">
-                    <CategoryCard />
-                </div>
+                @if (InMemoryDatabaseCache.Categories != null)
+                {
+                    for (int i = 0; i < InMemoryDatabaseCache.Categories.Count; i++)
+                    {
+                        <div class="col-md-4">
+                            <CategoryCard />
+                        </div>
+                    }
+                }
 
-                <div class="col-md-4">
-                    <CategoryCard />
-                </div>
 
-                <div class="col-md-4">
+                @* <div class="col-md-4">
                     <CategoryCard />
-                </div>
+                    </div>
 
- 
+                    <div class="col-md-4">
+                    <CategoryCard />
+                    </div>*@
+
+
             </div>
 
         </div>
@@ -32,3 +39,26 @@
 
 <Client.Components.Public.Shared.Footer />
 
+@implements IDisposable
+@code {
+    [Inject] InMemoryDatabaseCache InMemoryDatabaseCache { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        InMemoryDatabaseCache.OnCategoriesDataChanged += StateHasChanged;
+
+        if (InMemoryDatabaseCache.Categories == null)
+        {
+            await InMemoryDatabaseCache.GetCategoriesFromDatabaseAndCache();
+        }
+    }
+
+    //unsubscribe from events dispose else we'll create a memory leak
+
+    public void Dispose()
+    {
+
+        //unsubscribed
+        InMemoryDatabaseCache.OnCategoriesDataChanged -= StateHasChanged;
+    }
+}
