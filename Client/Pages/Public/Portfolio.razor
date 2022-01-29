@@ -1,7 +1,79 @@
 ﻿@page "/portfolio"
 <Client.Components.Public.Shared.Navbar/>
-<h3>Portfolio</h3>
+
+<main class="container min-vh-90 py-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="mt-3">Portfolio</h1>
+
+            <p>On this oage you can view the commercial-grade projects I have completed.</p>
+
+            <div class="row mt-4">
+                <div class="col-md-4 my-2">
+                    <div class="card shadow">
+                        <img src="assets/img/publicbackgrounds/bg-motherboard.jpg" alt="Portfoltio project thumbnail image" />
+
+                        <div class="card-body">
+                            <h3 class="card-title fw-bold">My First Project</h3>
+                            <p class="card-text">
+                                 @String.Join(" ",_exampleExcept.Split().Take(20).ToArray())
+                            </p>
+                        </div>
+
+                        <button class="btn btn-primary stretched-link">
+                            <i class="fas fa-info-circle"></i> More information
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 my-2">
+                    <div class="card shadow">
+                        <img src="assets/img/publicbackgrounds/bg-motherboard.jpg" alt="Portfoltio project thumbnail image" />
+
+                        <div class="card-body">
+                            <h3 class="card-title fw-bold">My First Project</h3>
+                            <p class="card-text">
+                                @String.Join(" ",_exampleExcept.Split().Take(20).ToArray())
+                            </p>
+                        </div>
+
+                        <button class="btn btn-primary stretched-link">
+                            <i class="fas fa-info-circle"></i> More information
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 my-2">
+                    <div class="card shadow">
+                        <img src="assets/img/publicbackgrounds/bg-motherboard.jpg" alt="Portfoltio project thumbnail image" />
+
+                        <div class="card-body">
+                            <h3 class="card-title fw-bold">My First Project</h3>
+                            <p class="card-text">
+                                @String.Join(" ",_exampleExcept.Split().Take(20).ToArray())
+                            </p>
+                        </div>
+
+                        <button class="btn btn-primary stretched-link">
+                            <i class="fas fa-info-circle"></i> More information
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</main>
+
 <Client.Components.Public.Shared.Footer/>
-@code {
+
+@code{
+    private string _exampleExcept = "Lorem ipsum dolor sit amet, consectetur adipiscing elit." +
+                                        "In eget elit eget nisl rutrum venenatis et eget urna." +
+                                        "Donec pharetra, ante at pharetra efficitur, libero velit" +
+                                        "fringilla libero, vitae dictum arcu quam sed elit." +
+                                        "Nunc augue ex, dapibus at scelerisque vel, elementum eu sapien." +
+                                        "Nullam at nisl placerat felis ullamcorper fringilla vel non urna.";
 
 }
