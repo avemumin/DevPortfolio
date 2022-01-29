@@ -47,7 +47,7 @@ namespace Server.Data
             #region Posts seed
             Post[] postsToSeed = new Post[6];
 
-            for (int i = 0; i < 7; i++)
+            for (int i = 1; i < 7; i++)
             {
                 string postTitle = string.Empty;
                 int categoryId = 0;
@@ -67,15 +67,15 @@ namespace Server.Data
                         break;
                     case 4:
                         postTitle = "Fourth post";
-                        categoryId = 4;
+                        categoryId = 1;
                         break;
                     case 5:
                         postTitle = "Fifth post";
-                        categoryId = 5;
+                        categoryId = 2;
                         break;
                     case 6:
                         postTitle = "Sixth post";
-                        categoryId = 6;
+                        categoryId = 3;
                         break;
 
                     default:
@@ -89,6 +89,7 @@ namespace Server.Data
                     Excerpt = $"This is the excerpt for post {i}. An excerpt is a little extraction from a larger piece of text. Sort of lika a preview ",
                     Content = String.Empty,
                     PublishDate = DateTime.UtcNow.ToString("dd/MM/yyyy hh:mm"),
+                    Published = true,
                     Author = "John Doe",
                     CategoryId = categoryId
                 };
