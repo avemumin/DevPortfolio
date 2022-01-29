@@ -1,8 +1,50 @@
 ﻿@page "/about"
 
-<Client.Components.Public.Shared.Navbar/>
-<h3>About</h3>
-<Client.Components.Public.Shared.Footer/>
+<Client.Components.Public.Shared.Navbar />
+
+<main class="container min-vh-90 py-md-5">
+    <div class="row p-4 mt-md-5 shadow-no-hover">
+        <div class="col">
+            <h3 class="text-primary">Who am I?</h3>
+            <h2>I'am John Doe, a passionate .Net Developer</h2>
+            <p class="d-line-flex">
+                I'am a software developer that speclializes in .Net and Azure development.
+                <br />
+                <br />
+                Solving problems with software is fun to me
+
+                <br />
+                <br />
+
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis magna sem. Praesent id dui non dolor sagittis laoreet quis ut diam. Proin a fermentum massa, vel tempus turpis. Nulla semper turpis odio, quis sagittis enim fermentum sed. Donec in ligula quis neque molestie eleifend ut et tellus. Donec vitae malesuada purus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus elementum risus a dui sollicitudin euismod. Praesent at tortor sed quam vehicula blandit. Donec a lorem sed enim lobortis molestie et at tellus. In tempus metus et lacus eleifend, id finibus massa viverra.
+
+                <br />
+                <br />
+
+                <h2>Background</h2>
+                Cras a lectus elementum, ultricies nulla eget, interdum massa. Sed eleifend ex a eros bibendum, auctor hendrerit velit vestibulum. Ut tristique dolor sit amet mattis scelerisque. Donec eu dolor vitae libero molestie tristique. Phasellus lacinia bibendum nibh ac sollicitudin. Cras tincidunt semper gravida. Maecenas at augue iaculis, lacinia neque at, gravida dui. Vestibulum vitae ex auctor, imperdiet ex non, ornare orci. Nam venenatis lobortis enim ut aliquet. Praesent vel suscipit ante. Fusce volutpat lacinia est eu condimentum. Aenean dapibus risus vel eros rhoncus, non maximus massa finibus. Aenean non lacinia risus, eu feugiat orci.
+            </p>
+
+            <hr />
+
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="assets/docs/test-pdf.pdf" download class="btn btn-primary shadow btn-lg d-flex justify-content-center align-items-center my-4">
+                        <i class="fas fa-file-pdf"></i> &nbsp;View resume
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="/portfolio" download class="btn btn-secondary shadow btn-lg d-flex justify-content-center align-items-center my-4">
+                        <i class="fas fa-project-diagram"></i> &nbsp;Projects
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<Client.Components.Public.Shared.Footer />
 @code {
 
 }
