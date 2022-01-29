@@ -1,5 +1,15 @@
 ﻿@page "/portfolio"
-<Client.Components.Public.Shared.Navbar/>
+<Client.Components.Public.Shared.Navbar />
+
+@if (_showingExamplePortfolioProjectModalWindow)
+{
+    <Client.Components.Public.Portfolio.ExamplePortfolioProjectModalWindow ParentMethodToCallOnClickBtnClose="() => _showingExamplePortfolioProjectModalWindow = false" />
+}
+@if (_showingExamplePortfolioProjectModalWindow2)
+{
+    <Client.Components.Public.Portfolio.ExamplePortfolioProjectModalWindow2 ParentMethodToCallOnClickBtnClose="() => _showingExamplePortfolioProjectModalWindow2 = false"/>
+}
+
 
 <main class="container min-vh-90 py-5">
     <div class="row">
@@ -16,11 +26,11 @@
                         <div class="card-body">
                             <h3 class="card-title fw-bold">My First Project</h3>
                             <p class="card-text">
-                                 @String.Join(" ",_exampleExcept.Split().Take(20).ToArray())
+                                @String.Join(" ",_exampleExcept.Split().Take(20).ToArray())
                             </p>
                         </div>
 
-                        <button class="btn btn-primary stretched-link">
+                        <button @onclick="() => _showingExamplePortfolioProjectModalWindow = true" class="btn btn-primary stretched-link">
                             <i class="fas fa-info-circle"></i> More information
                         </button>
                     </div>
@@ -31,13 +41,13 @@
                         <img src="assets/img/publicbackgrounds/bg-motherboard.jpg" alt="Portfoltio project thumbnail image" />
 
                         <div class="card-body">
-                            <h3 class="card-title fw-bold">My First Project</h3>
+                            <h3 class="card-title fw-bold">My Second Project</h3>
                             <p class="card-text">
                                 @String.Join(" ",_exampleExcept.Split().Take(20).ToArray())
                             </p>
                         </div>
 
-                        <button class="btn btn-primary stretched-link">
+                        <button @onclick="() => _showingExamplePortfolioProjectModalWindow2 = true" class="btn btn-primary stretched-link">
                             <i class="fas fa-info-circle"></i> More information
                         </button>
                     </div>
@@ -48,13 +58,13 @@
                         <img src="assets/img/publicbackgrounds/bg-motherboard.jpg" alt="Portfoltio project thumbnail image" />
 
                         <div class="card-body">
-                            <h3 class="card-title fw-bold">My First Project</h3>
+                            <h3 class="card-title fw-bold">My Third Project</h3>
                             <p class="card-text">
                                 @String.Join(" ",_exampleExcept.Split().Take(20).ToArray())
                             </p>
                         </div>
 
-                        <button class="btn btn-primary stretched-link">
+                        <button @onclick="() => _showingExamplePortfolioProjectModalWindow = true" class="btn btn-primary stretched-link">
                             <i class="fas fa-info-circle"></i> More information
                         </button>
                     </div>
@@ -66,9 +76,11 @@
     </div>
 </main>
 
-<Client.Components.Public.Shared.Footer/>
+<Client.Components.Public.Shared.Footer />
 
-@code{
+@code {
+    private bool _showingExamplePortfolioProjectModalWindow = false;
+    private bool _showingExamplePortfolioProjectModalWindow2 = false;
     private string _exampleExcept = "Lorem ipsum dolor sit amet, consectetur adipiscing elit." +
                                         "In eget elit eget nisl rutrum venenatis et eget urna." +
                                         "Donec pharetra, ante at pharetra efficitur, libero velit" +
