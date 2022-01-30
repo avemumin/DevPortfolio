@@ -10,11 +10,14 @@ namespace Server.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly AppDBContext _appDBContext;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public CategoriesController(AppDBContext appDBContext)
+        public CategoriesController(AppDBContext appDBContext, IWebHostEnvironment webHostEnvironment)
         {
             _appDBContext = appDBContext;
+            _webHostEnvironment = webHostEnvironment;
         }
+
         #region CRUD operations
 
         [HttpGet]
@@ -50,6 +53,100 @@ namespace Server.Controllers
             return Ok(category);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] Category categoryToCreate)
+        {
+            try
+            {
+                if (categoryToCreate == null)
+                    return BadRequest(ModelState);
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                await _appDBContext.Categories.AddAsync(categoryToCreate);
+                bool changePersistedToDatabase = await PersistChangesToDatabase();
+
+                if (!changePersistedToDatabase)
+                    return StatusCode(500, "Something went wrong on our side. Please contact the administrator");
+
+                return Created("Create", categoryToCreate);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, $"Something went wrong on our side. Please contact the administrator. Error message: {e.Message} .");
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] Category updatedCategory)
+        {
+            try
+            {
+                if (id < 1 || updatedCategory == null || id != updatedCategory.CategoryId)
+                    return BadRequest(ModelState);
+
+                bool exists = await _appDBContext.Categories.AnyAsync(category => category.CategoryId == id);
+
+                if (!exists)
+                    return NotFound();
+
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                _appDBContext.Categories.Update(updatedCategory);
+                bool changePersistedToDatabase = await PersistChangesToDatabase();
+
+                if (!changePersistedToDatabase)
+                    return StatusCode(500, "Something went wrong on our side. Please contact the administrator");
+
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, $"Something went wrong on our side. Please contact the administrator. Error message: {e.Message} .");
+            }
+        }
+
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                if (id < 1 )
+                    return BadRequest(ModelState);
+
+                bool exists = await _appDBContext.Categories.AnyAsync(category => category.CategoryId == id);
+
+                if (!exists)
+                    return NotFound();
+
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var categoryToDelete = await GetCategoryByCategoryId(id, false);
+
+                if (categoryToDelete.ThumbnailimagePath != "upload/placeholder.jpg")
+                {
+                    string fileName = categoryToDelete.ThumbnailimagePath.Split('/').Last();
+                    System.IO.File.Delete($"{_webHostEnvironment.ContentRootPath}\\wwwroot\\uploads\\{fileName}");
+                }
+
+                _appDBContext.Categories.Remove(categoryToDelete);
+
+                bool changePersistedToDatabase = await PersistChangesToDatabase();
+
+                if (!changePersistedToDatabase)
+                    return StatusCode(500, "Something went wrong on our side. Please contact the administrator");
+
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, $"Something went wrong on our side. Please contact the administrator. Error message: {e.Message} .");
+            }
+        }
+
 
         #endregion
 
@@ -67,7 +164,7 @@ namespace Server.Controllers
         [ApiExplorerSettings(IgnoreApi = true)]
         private async Task<Category> GetCategoryByCategoryId(int categoryId, bool withPosts)
         {
-            Category categoryToGet = null;
+            var categoryToGet = null as Category;
             if (withPosts == true)
             {
                 categoryToGet = await _appDBContext.Categories
