@@ -16,6 +16,23 @@ body {
     box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.4) !important;
 }
 
+
+.admin-area-main {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-x: auto;
+    overflow-y: auto;
+    background-color: #404040;
+}
+
+.admin-area-content {
+    overflow-y: scroll;
+    padding: 10vw;
+}
+
+
 .shadow-no-hover {
     box-shadow: 0 0.15rem 0.4rem rgba(0,0,0,0.5) !important;
 }
@@ -46,6 +63,7 @@ body {
         margin-top: 1rem !important;
         margin-bottom: 1rem !important;
     }
+
     .bg-motherboard-dev {
         background-image: url("../assets/img/publicbackgrounds/bg-motherboard.jpg");
     }
@@ -53,8 +71,8 @@ body {
 
 
 @media(min-width: 992px) {
-    .md-f-size-1-5{
-        font-size:1.5rem;
+    .md-f-size-1-5 {
+        font-size: 1.5rem;
     }
 }
 
