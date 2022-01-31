@@ -10,10 +10,12 @@
     }
 }
 
-.nav-pills ,nav-link{
+.nav-pills .nav-link{
     border-radius:0px;
 }
 
-.nav-pills, nav-link:hover {
+.nav-pills .nav-link:hover {
     background-color:#115dce;
 }
+
+
