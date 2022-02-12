@@ -12,6 +12,60 @@ body {
     border-radius: 0px;
 }
 
+.w-8 {
+    width: 8%;
+}
+
+.w-14 {
+    width: 14%;
+}
+
+.w-15 {
+    width: 15%;
+}
+
+.w-35 {
+    width: 35%;
+}
+
+.w-40 {
+    width: 40%;
+}
+
+.flex-shrink-1 {
+    flex-shrink: 1;
+}
+
+.z-index-5 {
+    z-index: 5;
+}
+
+.btn-update {
+    color: #FFF;
+    background-color: #cfb300;
+    border-color: #cfb300;
+}
+
+
+    .btn-update:hover {
+        color: #FFF;
+        background-color: #a68f00;
+        border-color: #a68f00;
+    }
+
+
+.admin-index-thumbnail-image {
+    display: block;
+    width: 50%;
+}
+
+.admin-crud-thumbnail-image {
+    display: block;
+    width: 200%;
+    height: auto;
+}
+
+
 .shadow {
     box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.4) !important;
 }
@@ -46,8 +100,8 @@ body {
     background-image: url("../assets/img/publicbackgrounds/bg-motherboard-dev.jpg");
 }
 
-.bg-lightgray{
-    background-color:#EBEBEB;
+.bg-lightgray {
+    background-color: #EBEBEB;
 }
 
 .hover-bg-white:hover {
@@ -78,8 +132,8 @@ body {
         background-image: url("../assets/img/publicbackgrounds/bg-motherboard.jpg");
     }
 
-    .md-and-smaller-d-none{
-        display:none !important;
+    .md-and-smaller-d-none {
+        display: none !important;
     }
 }
 
