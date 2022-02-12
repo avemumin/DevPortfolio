@@ -13,9 +13,9 @@ namespace Client.Services
             _httpClient = httpClient;
         }
 
-        private List<Category>? _categories = null;
+        private List<Category> _categories = null;
 
-        internal List<Category>? Categories
+        internal List<Category> Categories
         {
             get
             {
