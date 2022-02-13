@@ -56,13 +56,13 @@ body {
 
 .admin-index-thumbnail-image {
     display: block;
-    width: 50%;
+    width: 100%;
+    height: auto;
 }
 
-.admin-crud-thumbnail-image {
+.admin-crud-form-thumbnail-image {
     display: block;
-    width: 200%;
-    height: auto;
+    width: 50%;
 }
 
 
