@@ -29,7 +29,7 @@ namespace Server.Controllers
                     {
                         string oldUploadedImageFileName = uploadedImage.OldImagePath.Split('/').Last();
 
-                        System.IO.File.Delete($"{_webHostEnvironment.ContentRootPath}\\wwwroot\\uploadss\\{oldUploadedImageFileName}");
+                        System.IO.File.Delete($"{_webHostEnvironment.ContentRootPath}\\wwwroot\\uploads\\{oldUploadedImageFileName}");
                     }
                 }
                 string guid = Guid.NewGuid().ToString();
